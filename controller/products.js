@@ -17,12 +17,15 @@ exports.postNewProduct = (req, res)=>{
 }
 
 exports.getProduct = (req, res)=>{
-    res.render('shop',{
-        pageTitle: "Shop",
-        products: Product.fetchAll(),
-        path:'/',
-        formCSS:true,
-        productCSS: true,
-        activeAddProduct: true,
-    });
+    Product.fetchAll(products=>{
+        console.log("Products",products);
+        res.render('shop',{
+            pageTitle: "Shop",
+            products: products,
+            path:'/',
+            formCSS:true,
+            productCSS: true,
+            activeAddProduct: true,
+        });
+    })
 }
